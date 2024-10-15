@@ -19,8 +19,7 @@
     "jquery": "^3.7.1",
     "jquery-ui": "^1.13.3",
     "jquery-ui-dist": "^1.13.3",
-    "vue": "^3.4.30",
-    "vue3-select2-component": "^0.1.7"
+    "vue": "^3.4.30"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",

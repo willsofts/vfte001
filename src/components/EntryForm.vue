@@ -288,6 +288,7 @@ export default {
     startInsertRecord() {
       this.resetRecord();
       this.showDialog();
+      $("#iconstyleswitcher").styleupdate();
     },
     startSaveRecord() {
       confirmSave(() => {
@@ -326,7 +327,7 @@ export default {
             successbox(() => {
               //reset data for new record insert
               this.resetRecord();
-              this.$refs.programid.focus();
+              setTimeout(() => this.$refs.programid.focus(),100);
             });
             this.$emit('data-saved',dataRecord,data);
           }
@@ -381,6 +382,7 @@ export default {
             this.v$.$reset();
             this.disabledKeyField = true;
             this.showDialog();
+            $("#iconstyleswitcher").styleupdate(this.localData.iconstyle);
           }
         }
       });	

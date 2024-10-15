@@ -107,7 +107,7 @@ $.fn.styleswitcher = function(settings){
 		});
 	}
 	
-	button.click(
+	button.on("click",
 		function(){
 			if(switcherpane.is(':visible')){ switcherpane.spHide(button); }
 			else{ switcherpane.spShow(button); }
@@ -120,7 +120,7 @@ $.fn.styleswitcher = function(settings){
 		function(){if(switcherpane.is(':visible')){$(this).spHide(button);}}
 	);
 	
-	$(document).click(function() { switcherpane.spHide(button); });
+	$(document).on("click",function() { switcherpane.spHide(button); });
 	
 	//show/hide panel functions
 	$.fn.spShow = function(btn){ 
@@ -131,7 +131,7 @@ $.fn.styleswitcher = function(settings){
 		$(this).slideUp(50, function(){options.onClose();}); btn.css(button_default); 
 	}			
 	
-	switcherpane.find('a').click(function(){
+	switcherpane.find('a').on("click",function(){
 		if(options.$styleInput) {
 			options.$styleInput.val($(this).attr('href'));
 			options.$styleInput.get(0).dispatchEvent(new Event('input', { bubbles: true })); 
@@ -249,11 +249,17 @@ $.fn.styleswitcher = function(settings){
 		outline: '0'
 	}).end();
 		
-	$.fn.styleupdate = function(styleText) { 
-		if(styleText!="") {
-			var btn = $(this).find("a.jquery-ui-styleswitcher-trigger");
-			var styleName = "<i class='"+styleText+"' aria-hidden='true'></i>";
-			btn.find('.jquery-ui-styleswitcher-title').html(styleName);
+	$.fn.styleupdate = function(styleText) {
+		let btn = $(this).find("a.jquery-ui-styleswitcher-trigger");
+		if(styleText === undefined) {
+			btn.find('.jquery-ui-styleswitcher-title').html("Style Selection");
+		} else {
+			if(styleText!="") {
+				let styleName = "<i class='"+styleText+"' aria-hidden='true'></i>";
+				btn.find('.jquery-ui-styleswitcher-title').html(styleName);
+			} else {
+				btn.find('.jquery-ui-styleswitcher-title').html("");
+			}
 		}
 	};
 		

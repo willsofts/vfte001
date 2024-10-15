@@ -4,7 +4,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "jquery-ui-dist/jquery-ui.css";
 import "bootstrap";
 import "bootbox";
-import "./assets/jquery/js/jquery.maskedinput.js";
 import "./assets/jquery/js/jquery.ui.styleswitcher.js";
 import "./assets/css/font-awesome.css";
 import "./assets/css/component.css";
