@@ -138,8 +138,8 @@
         <input type="hidden" id="iconstyle" v-model="localData.iconstyle" />
     </template>
     <template v-slot:footer>
-      <button class="btn btn-dark btn-sm" @click="saveClick" v-if="insertMode"><em class="fa fa-save fa-btn-icon"></em>{{ labels.save_button }}</button>
-      <button class="btn btn-dark btn-sm" @click="updateClick" v-if="updateMode"><em class="fa fa-save fa-btn-icon"></em>{{ labels.update_button }}</button>
+      <button ref="savebutton" id="savebutton" class="btn btn-dark btn-sm" @click="saveClick" v-if="insertMode"><em class="fa fa-save fa-btn-icon"></em>{{ labels.save_button }}</button>
+      <button ref="updatebutton" id="updatebutton" class="btn btn-dark btn-sm" @click="updateClick" v-if="updateMode"><em class="fa fa-save fa-btn-icon"></em>{{ labels.update_button }}</button>
       <button class="btn btn-dark btn-sm" data-dismiss="modal"><em class="fa fa-close fa-btn-icon"></em>{{ labels.cancel_button }}</button>
     </template>
   </DialogForm>
@@ -149,7 +149,7 @@ import { ref, computed, watch } from 'vue';
 import { useVuelidate } from '@vuelidate/core';
 import { required, helpers } from '@vuelidate/validators';
 import $ from "jquery";
-import { DEFAULT_CONTENT_TYPE, getApiUrl, getImgUrl }  from '@willsofts/will-app';
+import { DEFAULT_CONTENT_TYPE, getApiUrl, getImgUrl, disableControls }  from '@willsofts/will-app';
 import { startWaiting, stopWaiting, submitFailure, detectErrorResponse }  from '@willsofts/will-app';
 import { confirmUpdate, confirmSave, confirmDelete, successbox, serializeParameters } from '@willsofts/will-app';
 import DialogForm from './DialogForm.vue';
@@ -238,6 +238,7 @@ export default {
     async saveClick() {
       console.log("click: save");
       console.log("localData",this.localData);
+      disableControls($("#savebutton"));
       let valid = await this.validateForm();
       if(!valid) return;
       this.startSaveRecord();
@@ -245,6 +246,7 @@ export default {
     async updateClick() {
       console.log("click: update");
       console.log("localData",this.localData);
+      disableControls($("#updatebutton"));
       let valid = await this.validateForm();
       if(!valid) return;
       this.startUpdateRecord();
