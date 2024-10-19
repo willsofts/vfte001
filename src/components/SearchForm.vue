@@ -37,6 +37,7 @@ import { startWaiting, stopWaiting, submitFailure, serializeParameters }  from '
 import { Paging } from "@willsofts/will-app";
 import { DataTable, DataPaging } from '@willsofts/will-control';
 
+const APP_URL = "/api/sfte001";
 const defaultData = {
   programid: '',
   progname: "",
@@ -119,7 +120,7 @@ export default {
       let formdata = serializeParameters(jsondata,criterias);
       startWaiting();
       $.ajax({
-        url: getApiUrl()+"/api/sfte001/collect",
+        url: getApiUrl()+APP_URL+"/collect",
         data: formdata.jsondata,
         headers : formdata.headers,
         type: "POST",

@@ -154,6 +154,7 @@ import { startWaiting, stopWaiting, submitFailure, detectErrorResponse }  from '
 import { confirmUpdate, confirmSave, confirmDelete, successbox, serializeParameters } from '@willsofts/will-app';
 import DialogForm from './DialogForm.vue';
 
+const APP_URL = "/api/sfte001";
 const defaultData = {
   programid: '',
   progname: "",
@@ -312,7 +313,7 @@ export default {
         let formdata = serializeParameters(jsondata,dataRecord);
         startWaiting();
         $.ajax({
-          url: getApiUrl()+"/api/sfte001/insert",
+          url: getApiUrl()+APP_URL+"/insert",
           data: formdata.jsondata,
           headers : formdata.headers,
           type: "POST",
@@ -340,7 +341,7 @@ export default {
         let formdata = serializeParameters(jsondata,dataRecord);
         startWaiting();
         $.ajax({
-          url: getApiUrl()+"/api/sfte001/update",
+          url: getApiUrl()+APP_URL+"/update",
           data: formdata.jsondata,
           headers : formdata.headers,
           type: "POST",
@@ -366,7 +367,7 @@ export default {
       let formdata = serializeParameters(jsondata,dataKeys);
       startWaiting();
       $.ajax({
-        url: getApiUrl()+"/api/sfte001/retrieve",
+        url: getApiUrl()+APP_URL+"/retrieve",
         data: formdata.jsondata,
         headers : formdata.headers,
         type: "POST",
@@ -394,7 +395,7 @@ export default {
       let formdata = serializeParameters(jsondata,dataKeys);
       startWaiting();
       $.ajax({
-        url: getApiUrl()+"/api/sfte001/remove",
+        url: getApiUrl()+APP_URL+"/remove",
         data: formdata.jsondata,
         headers : formdata.headers,
         type: "POST",
