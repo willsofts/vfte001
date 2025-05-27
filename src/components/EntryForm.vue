@@ -120,6 +120,27 @@
         </div>
         <div class="row row-height">
           <div class="col-height col-md-6">
+            <label class="control-label">{{ labels.openmethod_label }}</label>
+            <div class="row row-height row-openmethod">
+              <div class="col-md checkbox form-check">
+                <input ref="openmethod_post" type="radio" id="openmethod_post" value="POST" v-model="localData.openmethod" class="form-control input-md form-check-input"/>
+                <label for="openmethod_post" class="form-check-label">{{ labels.openmethod_post_label }}</label>
+              </div>
+              <div class="col-md checkbox form-check">
+                <input ref="openmethod_get" type="radio" id="openmethod_get" value="GET" v-model="localData.openmethod" class="form-control input-md form-check-input"/>
+                <label for="openmethod_get" class="form-check-label">{{ labels.openmethod_get_label }}</label>
+              </div>
+            </div>
+          </div>          
+          <div class="col-height col-md-6">
+            <div class="checkbox form-check">
+              <input type="checkbox" :true-value="1" :false-value="0" id="newflag" name="newflag" v-model="localData.newflag" class="form-control input-md form-check-input" />
+              <label for="newflag" class="control-label form-check-label">{{ labels.newflag_label }}</label>
+            </div>
+          </div>
+        </div>
+        <div class="row row-height">
+          <div class="col-height col-md-6">
             <label class="control-label">{{ labels.iconstyle_label }}</label>
 						<div ref="iconstyleswitcher" id="iconstyleswitcher"></div>							
           </div>
@@ -144,6 +165,9 @@
     </template>
   </DialogForm>
 </template>
+<style>
+.row-openmethod { margin-left: 10px; }
+</style>
 <script>
 import { ref, computed, watch } from 'vue';
 import { useVuelidate } from '@vuelidate/core';
@@ -168,6 +192,8 @@ const defaultData = {
   description: "",
   parameters: "",
   progpath: "",
+  newflag: "0",
+  openmethod: "POST",
   iconfile: "",
   iconstyle: "",
 };
